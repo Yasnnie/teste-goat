@@ -54,6 +54,7 @@ module.exports = {
     },
     backgroundImage: {
       bgImg: "url('/src/assets/background.png')",
+      bgButtonSubmit: "url('/src/assets/button.png')",
     },
     textColor: {
       "card-text": "rgba(255, 255, 255, 0.10)",

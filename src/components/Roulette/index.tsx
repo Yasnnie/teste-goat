@@ -2,12 +2,16 @@ import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { RouletteCard } from "../../types/Card";
 import { Card } from "../Card";
+import { SubmitButton } from "../SubmitButton";
+import { useNavigate } from "react-router-dom";
+import Confetti from "react-confetti";
 
 interface Props {
   items: RouletteCard[];
 }
 
 export function Roulette({ items }: Props) {
+  const navigate = useNavigate();
   const [isSpinning, setIsSpinning] = useState(false);
   const [selectedItemIndex, setSelectedItemIndex] = useState<number | null>(
     null
@@ -39,7 +43,7 @@ export function Roulette({ items }: Props) {
     setTimeout(() => {
       setIsSpinning(false);
       setIsFinished(true);
-    }, 19500);
+    }, 14000);
   };
 
   useEffect(() => {
@@ -51,7 +55,7 @@ export function Roulette({ items }: Props) {
 
     setTimeout(() => {
       spinToItem();
-    }, 2000);
+    }, 1000);
   }, []);
 
   const updateSelectedItem = (x: number) => {
@@ -68,12 +72,32 @@ export function Roulette({ items }: Props) {
   return (
     <>
       {isFinished && selectedItemIndex !== null ? (
-        <div className="flex flex-col items-center mt-4">
-          <Card card={extendedItems[selectedItemIndex]} />
-          <button className="mt-4 px-6 py-2 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700">
-            Girar Novamente
-          </button>
-        </div>
+        <>
+          <Confetti
+            width={window.innerWidth}
+            height={window.innerHeight}
+            colors={["#043054", "#0084F3", "#2F4E68", "#032A4A"]}
+          />
+
+          <div className="flex flex-col items-center w-full">
+            <strong className="text-white font-bold text-2xl mb-7">
+              {extendedItems[selectedItemIndex].name}{" "}
+              <span className="font-light">-</span>{" "}
+              <span className="font-light opacity-50">
+                {extendedItems[selectedItemIndex].rarity}
+              </span>
+            </strong>
+            <Card card={extendedItems[selectedItemIndex]} />
+            <div className="mt-[105px] w-full flex justify-center items-center">
+              <SubmitButton
+                text="ABRIR MAIS CAIXAS"
+                onClick={() => navigate("/")}
+                maxWidth={378}
+                height={72}
+              />
+            </div>
+          </div>
+        </>
       ) : (
         <div className="relative max-w-screen-xl w-full justify-start">
           <div className="relative w-full h-[140px] flex items-center overflow-x-hidden overflow-y-visible">
@@ -83,7 +107,7 @@ export function Roulette({ items }: Props) {
               ref={divRef}
               className="w-full flex gap-2.5"
               animate={{ x: -offset }}
-              transition={{ duration: 17, ease: "easeOut" }}
+              transition={{ duration: 12, ease: "easeOut" }}
               onUpdate={(latest) => {
                 const { x } = latest;
                 updateSelectedItem(x as number);
@@ -91,6 +115,10 @@ export function Roulette({ items }: Props) {
             >
               {extendedItems.map((item, index) => (
                 <Card card={item} selected={middle === index} />
+              ))}
+
+              {extendedItems.slice(0, 7).map((item) => (
+                <Card card={item} />
               ))}
             </motion.div>
           </div>
@@ -109,11 +137,6 @@ export function Roulette({ items }: Props) {
               />
             </svg>
           </div>
-          {/* {selectedItemIndex !== null && (
-        <p className="text-white mb-2">
-          Item Selecionado: {selectedItemIndex} | middle: {middle}
-        </p>
-      )} */}
         </div>
       )}
     </>

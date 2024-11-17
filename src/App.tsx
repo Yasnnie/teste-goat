@@ -1,11 +1,15 @@
-import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { Home } from "./pages/Home";
+import { Roleta } from "./pages/Roleta";
 
 function App() {
   return (
-    <div className="text-center mt-10">
-      <h1 className="text-3xl font-bold">Página Inicial</h1>
-      <p>Bem-vindo à página inicial!</p>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/roleta" element={<Roleta />} />
+      </Routes>
+    </Router>
   );
 }
 

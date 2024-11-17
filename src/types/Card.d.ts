@@ -13,3 +13,5 @@ export interface CardType {
   rarity: CardRarity;
   text?: string;
 }
+
+export type RouletteCard = Omit<CardType, "text">;

@@ -77,7 +77,7 @@ export function Home() {
           customização única e diferenciada.
         </p>
 
-        <div className="flex items-center justify-center">
+        <div className="flex items-center justify-center gap">
           <a>Retornar</a>
           <a>ABRIR CAIXA</a>
         </div>

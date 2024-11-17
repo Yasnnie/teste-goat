@@ -28,6 +28,8 @@ module.exports = {
         "exotic-shadow": "0px 0px 25px 0px rgba(255, 0, 153, 0.75)",
       },
       backgroundImage: {
+        roleta:
+          "linear-gradient(272deg, rgba(4, 13, 18, 0.00) 1.58%, #050E13 65.36%)",
         "exotic-gradient":
           "linear-gradient(65deg, rgba(255, 0, 153, 0.50) -6.69%, rgba(255, 0, 153, 0.25) 53.29%)",
         "mythical-gradient":

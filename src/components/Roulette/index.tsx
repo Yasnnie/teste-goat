@@ -5,6 +5,7 @@ import { Card } from "../Card";
 import { SubmitButton } from "../SubmitButton";
 import { useNavigate } from "react-router-dom";
 import Confetti from "react-confetti";
+import { Rarity } from "../../utils/fakeData";
 
 interface Props {
   items: RouletteCard[];
@@ -38,12 +39,12 @@ export function Roulette({ items }: Props) {
     const middleContainer = width / 2;
     const targetOffset = index * itemWidth;
 
-    setOffset(targetOffset - middleContainer);
+    setOffset(targetOffset + 60 - middleContainer);
 
     setTimeout(() => {
       setIsSpinning(false);
       setIsFinished(true);
-    }, 14000);
+    }, 13000);
   };
 
   useEffect(() => {
@@ -55,7 +56,7 @@ export function Roulette({ items }: Props) {
 
     setTimeout(() => {
       spinToItem();
-    }, 1000);
+    }, 500);
   }, []);
 
   const updateSelectedItem = (x: number) => {
@@ -79,12 +80,18 @@ export function Roulette({ items }: Props) {
             colors={["#043054", "#0084F3", "#2F4E68", "#032A4A"]}
           />
 
-          <div className="flex flex-col items-center w-full">
+          <motion.div
+            className="flex flex-col items-center w-full"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.35 }}
+            viewport={{ once: true }}
+          >
             <strong className="text-white font-bold text-2xl mb-7">
               {extendedItems[selectedItemIndex].name}{" "}
               <span className="font-light">-</span>{" "}
               <span className="font-light opacity-50">
-                {extendedItems[selectedItemIndex].rarity}
+                {Rarity[extendedItems[selectedItemIndex].rarity]}
               </span>
             </strong>
             <Card card={extendedItems[selectedItemIndex]} />
@@ -96,15 +103,16 @@ export function Roulette({ items }: Props) {
                 height={72}
               />
             </div>
-          </div>
+          </motion.div>
         </>
       ) : (
-        <div className="relative max-w-screen-xl w-full justify-start">
+        <div className="relative max-w-screen-xl w-full flex justify-center ">
           <div className="relative w-full h-[140px] flex items-center overflow-x-hidden overflow-y-visible">
             <div className="absolute w-[60px] z-50 left-0 h-full bg-roleta" />
             <div className="absolute w-[60px] z-50 right-0 h-full bg-roleta transform rotate-180" />
             <motion.div
               ref={divRef}
+              initial={{ x: 60 }}
               className="w-full flex gap-2.5"
               animate={{ x: -offset }}
               transition={{ duration: 12, ease: "easeOut" }}
@@ -123,7 +131,7 @@ export function Roulette({ items }: Props) {
             </motion.div>
           </div>
 
-          <div className="absolute top-[-56px] left-1/2 ">
+          <div className="absolute top-[-56px]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="116"

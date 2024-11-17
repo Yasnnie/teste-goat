@@ -1,11 +1,10 @@
-import { CardType } from "../../types/Card";
 import { Card } from "../../components/Card";
 import { PageTemplate } from "../../components/PageTemplate";
 import { Subtitle } from "../../components/Subtitle";
-import ItemImage from "../../assets/item.png";
 import CaixaImage from "../../assets/caixa.png";
 import { SubmitButton } from "../../components/SubmitButton";
 import { useNavigate } from "react-router-dom";
+import { fakeData } from "../../utils/fakeData";
 
 export function Home() {
   const navigate = useNavigate();
@@ -118,126 +117,3 @@ export function Home() {
     </PageTemplate>
   );
 }
-
-const fakeData: CardType[] = [
-  {
-    name: "Capuz Natalino",
-    image: ItemImage,
-    rarity: "EXOTIC",
-    text: "0.9% de chance",
-  },
-  {
-    name: "Capuz Natalino",
-    image: ItemImage,
-    rarity: "MYTHICAL",
-    text: "0.9% de chance",
-  },
-  {
-    name: "Capuz Natalino",
-    image: ItemImage,
-    rarity: "LEGENDARY",
-    text: "0.9% de chance",
-  },
-  {
-    name: "Capuz Natalino",
-    image: ItemImage,
-    rarity: "LEGENDARY",
-    text: "0.9% de chance",
-  },
-  {
-    name: "Capuz Natalino",
-    image: ItemImage,
-    rarity: "EPIC",
-    text: "0.9% de chance",
-  },
-  {
-    name: "Capuz Natalino",
-    image: ItemImage,
-    rarity: "EPIC",
-    text: "0.9% de chance",
-  },
-  {
-    name: "Capuz Natalino",
-    image: ItemImage,
-    rarity: "EPIC",
-    text: "0.9% de chance",
-  },
-  {
-    name: "Capuz Natalino",
-    image: ItemImage,
-    rarity: "EPIC",
-    text: "0.9% de chance",
-  },
-  {
-    name: "Capuz Natalino",
-    image: ItemImage,
-    rarity: "EPIC",
-    text: "0.9% de chance",
-  },
-  {
-    name: "Capuz Natalino",
-    image: ItemImage,
-    rarity: "RARE",
-    text: "0.9% de chance",
-  },
-  {
-    name: "Capuz Natalino",
-    image: ItemImage,
-    rarity: "RARE",
-    text: "0.9% de chance",
-  },
-  {
-    name: "Capuz Natalino",
-    image: ItemImage,
-    rarity: "RARE",
-    text: "0.9% de chance",
-  },
-  {
-    name: "Capuz Natalino",
-    image: ItemImage,
-    rarity: "UNCOMMON",
-    text: "0.9% de chance",
-  },
-  {
-    name: "Capuz Natalino",
-    image: ItemImage,
-    rarity: "UNCOMMON",
-    text: "0.9% de chance",
-  },
-  {
-    name: "Capuz Natalino",
-    image: ItemImage,
-    rarity: "COMMON",
-    text: "0.9% de chance",
-  },
-  {
-    name: "Capuz Natalino",
-    image: ItemImage,
-    rarity: "COMMON",
-    text: "0.9% de chance",
-  },
-  {
-    name: "Capuz Natalino",
-    image: ItemImage,
-    rarity: "COMMON",
-    text: "0.9% de chance",
-  },
-  {
-    name: "Capuz Natalino",
-    image: ItemImage,
-    rarity: "COMMON",
-    text: "0.9% de chance",
-  },
-  {
-    name: "Capuz Natalino",
-    image: ItemImage,
-    rarity: "COMMON",
-    text: "0.9% de chance",
-  },
-  {
-    name: "Capuz Natalino",
-    image: ItemImage,
-    rarity: "COMMON",
-    text: "0.9% de chance",
-  },
-];
